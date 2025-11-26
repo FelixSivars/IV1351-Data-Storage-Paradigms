@@ -9,6 +9,7 @@ SELECT
 FROM work_allocation wa
 JOIN course_instance ci ON wa.instance_id = ci.instance_id
 JOIN employee AS e ON e.emp_id = wa.emp_id
+WHERE ci.year = EXTRACT(YEAR FROM CURRENT_DATE) AND ci.period = 'P2'
 GROUP BY wa.emp_id, e.emp_id, ci.period
 ORDER BY ci.period;
 
