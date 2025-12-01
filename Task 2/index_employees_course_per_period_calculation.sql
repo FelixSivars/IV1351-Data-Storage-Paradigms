@@ -1,6 +1,8 @@
-DROP VIEW IF EXISTS employees_course_per_period_calculation;
+DROP INDEX IF EXISTS idx_ci_year_version;
 
-CREATE VIEW employees_course_per_period_calculation AS
+CREATE INDEX idx_ci_year_version
+ON course_instance (year, period)
+
 SELECT 
     wa.emp_id, 
 	CONCAT(e.first_name, ' ', e.last_name) AS teachers_name,
@@ -13,5 +15,3 @@ WHERE ci.year = EXTRACT(YEAR FROM CURRENT_DATE) AND ci.period = 'P1'
 GROUP BY wa.emp_id, e.emp_id, ci.period
 HAVING COUNT(DISTINCT wa.instance_id) >= 2
 ORDER BY ci.period;
-
-SELECT * FROM employees_course_per_period_calculation;
