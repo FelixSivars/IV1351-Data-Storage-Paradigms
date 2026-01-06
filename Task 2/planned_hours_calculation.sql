@@ -1,6 +1,6 @@
 DROP VIEW IF EXISTS planned_hours_calculation;
 
-CREATE VIEW planned_hours_calculation AS 
+CREATE MATERIALIZED VIEW planned_hours_calculation AS 
 SELECT 
 cv.course_code, 
 ci.instance_id, 
