@@ -1,4 +1,4 @@
-DROP VIEW IF EXISTS planned_hours_calculation;
+DROP MATERIALIZED VIEW IF EXISTS planned_hours_calculation;
 
 CREATE MATERIALIZED VIEW planned_hours_calculation AS 
 SELECT 
